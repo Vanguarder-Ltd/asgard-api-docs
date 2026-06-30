@@ -23,7 +23,7 @@ nav_order: 3
 | `403` | Forbidden | Your API token does not have access to the requested unit |
 | `404` | Not found | API token not recognised |
 | `422` | Unprocessable | Missing or invalid parameter — see `error` field in response |
-| `500` | Server error | Internal error — contact [info@vanguarder.com](mailto:info@vanguarder.com) |
+| `500` | Server error | Internal error — contact [support@vanguarder.com](mailto:support@vanguarder.com) |
 
 ---
 
@@ -54,13 +54,13 @@ A `422` response always includes an `error` field explaining exactly what is wro
 }
 ```
 
-Your API token is valid but does not have permission to access the requested `unit_id`. Each token is scoped to a specific set of units. Contact [info@vanguarder.com](mailto:info@vanguarder.com) if you believe a unit should be accessible to your account.
+Your API token is valid but does not have permission to access the requested `unit_id`. Each token is scoped to a specific set of units. Contact [support@vanguarder.com](mailto:support@vanguarder.com) if you believe a unit should be accessible to your account.
 
 ---
 
 ## 500 — Server error
 
-If you receive a `500` response, please contact [info@vanguarder.com](mailto:info@vanguarder.com) with:
+If you receive a `500` response, please contact [support@vanguarder.com](mailto:support@vanguarder.com) with:
 - The full request URL (remove your API token before sending)
 - The time of the request (UTC)
 - The response body if available

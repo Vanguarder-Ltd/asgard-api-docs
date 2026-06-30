@@ -36,4 +36,4 @@ https://integrate.vanguarder.com
 
 ## Need help?
 
-Contact the Vanguarder integration team at [info@vanguarder.com](mailto:info@vanguarder.com)
+Contact the Vanguarder integration team at [support@vanguarder.com](mailto:support@vanguarder.com)

@@ -11,4 +11,4 @@ A formally versioned `v1` API is planned for a future release. It will provide l
 
 The current API (endpoints under `/chestnut` and `/generic`) will continue to operate without change. No endpoints will be deprecated or removed without a minimum 60-day notice period communicated via the changelog.
 
-If you have feedback on the v1 API design, contact [info@vanguarder.com](mailto:info@vanguarder.com).
+If you have feedback on the v1 API design, contact [support@vanguarder.com](mailto:support@vanguarder.com).

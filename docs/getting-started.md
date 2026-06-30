@@ -35,7 +35,7 @@ GET https://integrate.vanguarder.com/chestnut/units?api_token=YOUR_TOKEN_HERE
 
 ## Getting your API token
 
-Your API token is provided by the Vanguarder integration team when your account is set up. If you need a new token or have lost yours, contact [info@vanguarder.com](mailto:info@vanguarder.com).
+Your API token is provided by the Vanguarder integration team when your account is set up. If you need a new token or have lost yours, contact [support@vanguarder.com](mailto:support@vanguarder.com).
 
 {: .warning }
 Keep your API token secure. Do not expose it in client-side code or public repositories. If you believe your token has been compromised, contact us immediately.
