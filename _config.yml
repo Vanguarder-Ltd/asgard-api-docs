@@ -3,7 +3,7 @@ description: Official API reference for Asgard integration partners
 url: https://vanguarder-ltd.github.io
 baseurl: /asgard-api-docs
 
-theme: just-the-docs
+remote_theme: just-the-docs/just-the-docs@v0.10.0
 
 # Navigation
 nav_enabled: true
@@ -24,4 +24,5 @@ last_edit_timestamp: true
 last_edit_time_format: "%d %B %Y"
 
 plugins:
+  - jekyll-remote-theme
   - jekyll-seo-tag
