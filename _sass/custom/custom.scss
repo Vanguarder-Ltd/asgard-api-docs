@@ -1,0 +1,23 @@
+// Custom Vanguarder brand overrides for Just the Docs dark theme
+
+// Brand accent — teal/cyan, consistent with Vanguarder UI
+$link-color: #00b4d8 !default;
+$btn-primary-color: #00b4d8 !default;
+$sidebar-color: #1a1d23 !default;
+$body-background-color: #16191f !default;
+$code-background-color: #1e2229 !default;
+
+// Make the site header slightly more distinct
+.site-header {
+  border-bottom: 1px solid #00b4d820;
+}
+
+// Slightly warmer table headers
+table th {
+  background-color: #1e2229;
+}
+
+// Callout label styling — more visible on dark
+.label {
+  font-weight: 600;
+}

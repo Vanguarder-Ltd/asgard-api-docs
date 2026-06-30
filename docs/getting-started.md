@@ -28,7 +28,7 @@ Pass your token as a query parameter on every request:
 ### Example
 
 ```
-GET https://integratevanguarder.com/chestnut/units?api_token=YOUR_TOKEN_HERE
+GET https://integrate.vanguarder.com/chestnut/units?api_token=YOUR_TOKEN_HERE
 ```
 
 ---

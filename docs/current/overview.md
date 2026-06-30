@@ -11,7 +11,7 @@ The current Asgard API provides two integration flavours depending on your use c
 
 | Integration | Base path | Best for |
 |:---|:---|:---|
-| **Chestnut** | `/chestnut` | Systems that need trailer positions, status, and historical back-fill (e.g. Samsara) |
+| **Chestnut** | `/chestnut` | Trailer positions, status, and historical back-fill for telematics integrations |
 | **Generic** | `/generic` | General fleet integrations needing unit list and last known position |
 
 ---

@@ -23,7 +23,7 @@ Asgard is Vanguarder's telematics platform. It collects real-time GPS, sensor, a
 
 | Integration | Base URL | Description |
 |:---|:---|:---|
-| **Chestnut** | `/chestnut` | Trailer position and status data — used by Samsara and similar systems |
+| **Chestnut** | `/chestnut` | Trailer position and status data for telematics platform integrations |
 | **Generic** | `/generic` | General-purpose fleet data for third-party integrations |
 
 ## Base URL
@@ -31,7 +31,7 @@ Asgard is Vanguarder's telematics platform. It collects real-time GPS, sensor, a
 All API requests go to:
 
 ```
-https://integratevanguarder.com
+https://integrate.vanguarder.com
 ```
 
 ## Need help?

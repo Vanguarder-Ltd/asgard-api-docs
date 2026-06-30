@@ -22,16 +22,23 @@ Returns all units accessible to your API token, including last known position an
 
 ## Parameters
 
-| Parameter | Type | Required | Description |
-|:---|:---|:---|:---|
-| `api_token` | string | yes | Your API authentication token |
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| `api_token` | string | yes | — | Your API authentication token |
+| `include_location` | boolean | no | `false` | Set to `true` to include a reverse-geocoded address for each unit. Adds latency — omit for high-frequency polling. |
 
 ---
 
 ## Example request
 
 ```
-GET https://integratevanguarder.com/generic/units?api_token=YOUR_TOKEN
+GET https://integrate.vanguarder.com/generic/units?api_token=YOUR_TOKEN
+```
+
+With reverse geocoding:
+
+```
+GET https://integrate.vanguarder.com/generic/units?api_token=YOUR_TOKEN&include_location=true
 ```
 
 ---
@@ -46,13 +53,18 @@ GET https://integratevanguarder.com/generic/units?api_token=YOUR_TOKEN
       "name": "44391-18",
       "ident": "866233059354530",
       "plate": "",
-      "latitude": 53.48264,
-      "longitude": -2.24382,
-      "altitude": 45.2,
-      "angle": 217,
-      "speed": 0,
-      "ignition": false,
-      "lastContact": 1781597100
+      "lastContact": 1781597100,
+      "odometer": 125430,
+      "position": {
+        "latitude": 53.48264,
+        "longitude": -2.24382,
+        "altitude": 45.2,
+        "angle": 217,
+        "speed": 0,
+        "ignition": false
+      },
+      "Events": "No Issues",
+      "location": null
     }
   ]
 }
@@ -68,10 +80,19 @@ GET https://integratevanguarder.com/generic/units?api_token=YOUR_TOKEN
 | `name` | string | Trailer identifier (e.g. fleet number) |
 | `ident` | string | Device IMEI number |
 | `plate` | string | Vehicle registration plate — may be empty |
-| `latitude` | float | Last known latitude in decimal degrees (WGS84) |
-| `longitude` | float | Last known longitude in decimal degrees (WGS84) |
+| `lastContact` | integer or null | Unix timestamp (UTC) of last data received |
+| `odometer` | float or null | Odometer reading at time of last contact |
+| `position` | object or null | Last known position (see below) |
+| `Events` | string | `"No Issues"` or `"Issues"` — indicates active DTC or overweight events |
+| `location` | string or null | Reverse-geocoded address — only populated when `include_location=true` |
+
+### `position` object
+
+| Field | Type | Description |
+|:---|:---|:---|
+| `latitude` | float | Latitude in decimal degrees (WGS84) |
+| `longitude` | float | Longitude in decimal degrees (WGS84) |
 | `altitude` | float | Altitude in metres above sea level |
 | `angle` | integer | Heading in degrees (0–359, clockwise from north) |
-| `speed` | integer | Speed in km/h at time of last contact |
-| `ignition` | boolean | Whether ignition was active at last contact |
-| `lastContact` | integer | Unix timestamp (UTC) of last data received |
+| `speed` | integer | Speed in km/h |
+| `ignition` | boolean | Whether ignition was active |

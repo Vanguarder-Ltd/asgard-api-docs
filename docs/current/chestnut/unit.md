@@ -25,14 +25,14 @@ Returns the last known position and status for a single trailer unit.
 | Parameter | Type | Required | Description |
 |:---|:---|:---|:---|
 | `api_token` | string | yes | Your API authentication token |
-| `unit_id` | integer | yes | Unit ID from [`/chestnut/units`](units) |
+| `name` | string | yes | Trailer name or partial name (case-insensitive). Must match exactly one unit. |
 
 ---
 
 ## Example request
 
 ```
-GET https://integratevanguarder.com/chestnut/unit?api_token=YOUR_TOKEN&unit_id=5974
+GET https://integrate.vanguarder.com/chestnut/unit?api_token=YOUR_TOKEN&name=44391-18
 ```
 
 ---
@@ -47,13 +47,10 @@ GET https://integratevanguarder.com/chestnut/unit?api_token=YOUR_TOKEN&unit_id=5
       "name": "44391-18",
       "ident": "866233059354530",
       "plate": "",
-      "latitude": 53.48264,
-      "longitude": -2.24382,
-      "altitude": 45.2,
-      "angle": 217,
-      "speed": 0,
-      "ignition": false,
-      "lastContact": 1781597100
+      "lastContact": 1781597100,
+      "odometer": 125430,
+      "Events": "No Issues",
+      "location": "Trafford Park, Manchester, UK"
     }
   ]
 }
@@ -69,15 +66,18 @@ GET https://integratevanguarder.com/chestnut/unit?api_token=YOUR_TOKEN&unit_id=5
 | `name` | string | Trailer identifier |
 | `ident` | string | Device IMEI |
 | `plate` | string | Registration plate — may be empty |
-| `latitude` | float | Last known latitude in decimal degrees (WGS84) |
-| `longitude` | float | Last known longitude in decimal degrees (WGS84) |
-| `altitude` | float | Altitude in metres above sea level |
-| `angle` | integer | Heading in degrees (0–359, clockwise from north) |
-| `speed` | integer | Speed in km/h at time of last contact |
-| `ignition` | boolean | Whether ignition was active at last contact |
 | `lastContact` | integer | Unix timestamp (UTC) of last data received |
+| `odometer` | float or null | Odometer reading at time of last contact |
+| `Events` | string | `"No Issues"` or `"Issues"` — indicates active DTC or overweight events |
+| `location` | string or null | Reverse-geocoded address of last known position |
 
 ---
+
+## Notes
+
+- The `name` parameter performs a partial, case-insensitive match
+- If the search matches more than one unit, a `422` error is returned — use a more specific name
+- `location` is always included as a human-readable address string when a valid position is available
 
 ## Notes
 

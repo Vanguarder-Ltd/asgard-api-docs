@@ -51,7 +51,7 @@ For windows longer than 24 hours, split into multiple requests.
 ## Example request
 
 ```
-GET https://integratevanguarder.com/chestnut/positions
+GET https://integrate.vanguarder.com/chestnut/positions
   ?api_token=YOUR_TOKEN
   &unit_id=5974
   &from_ts=1781595180
@@ -65,7 +65,7 @@ GET https://integratevanguarder.com/chestnut/positions
 When the response includes `"has_next": true`, pass the returned `next_cursor` value to retrieve the next page:
 
 ```
-GET https://integratevanguarder.com/chestnut/positions
+GET https://integrate.vanguarder.com/chestnut/positions
   ?api_token=YOUR_TOKEN
   &unit_id=5974
   &from_ts=1781595180
@@ -165,7 +165,7 @@ Use this endpoint to recover data after a polling failure:
 import requests
 import time
 
-BASE_URL = "https://integratevanguarder.com"
+BASE_URL = "https://integrate.vanguarder.com"
 TOKEN    = "YOUR_TOKEN"
 UNIT_ID  = 5974
 

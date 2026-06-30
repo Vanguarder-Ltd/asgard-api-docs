@@ -31,7 +31,7 @@ Returns a list of all trailer units accessible to your API token.
 ## Example request
 
 ```
-GET https://integratevanguarder.com/chestnut/units?api_token=YOUR_TOKEN
+GET https://integrate.vanguarder.com/chestnut/units?api_token=YOUR_TOKEN
 ```
 
 ---
