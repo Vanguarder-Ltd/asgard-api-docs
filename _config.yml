@@ -8,6 +8,8 @@ accent_color: "#00b4d8"
 
 remote_theme: just-the-docs/just-the-docs@v0.10.0
 
+favicon_ico: "/asgard-api-docs/favicon.ico"
+
 # Navigation
 nav_enabled: true
 search_enabled: true
