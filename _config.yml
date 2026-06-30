@@ -1,0 +1,27 @@
+title: Asgard API Documentation
+description: Official API reference for Asgard integration partners
+url: https://vanguarder-ltd.github.io
+baseurl: /asgard-api-docs
+
+theme: just-the-docs
+
+# Navigation
+nav_enabled: true
+search_enabled: true
+
+# Footer
+footer_content: "&copy; 2026 Vanguarder Ltd. All rights reserved."
+
+# Colour scheme
+color_scheme: dark
+
+# Back to top
+back_to_top: true
+back_to_top_text: "Back to top"
+
+# Last edit timestamp
+last_edit_timestamp: true
+last_edit_time_format: "%d %B %Y"
+
+plugins:
+  - jekyll-seo-tag
