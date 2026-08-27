@@ -98,3 +98,9 @@ GET https://integrate.vanguarder.com/generic/unit?api_token=YOUR_TOKEN&name=4439
 
 - The `name` parameter performs a partial, case-insensitive match
 - If the search matches more than one unit, a `422` error is returned — use a more specific name
+
+---
+
+## Rate limit
+
+60 requests per minute per API token. Exceeding this returns a `429 Too Many Requests` response.

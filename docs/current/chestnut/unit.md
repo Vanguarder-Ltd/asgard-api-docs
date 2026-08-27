@@ -79,6 +79,12 @@ GET https://integrate.vanguarder.com/chestnut/unit?api_token=YOUR_TOKEN&name=443
 - If the search matches more than one unit, a `422` error is returned — use a more specific name
 - `location` is always included as a human-readable address string when a valid position is available
 
+---
+
+## Rate limit
+
+60 requests per minute per API token. Exceeding this returns a `429 Too Many Requests` response.
+
 ## Notes
 
 - This endpoint returns only the **most recent** record for the unit
