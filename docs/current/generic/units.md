@@ -96,3 +96,9 @@ GET https://integrate.vanguarder.com/generic/units?api_token=YOUR_TOKEN&include_
 | `angle` | integer | Heading in degrees (0–359, clockwise from north) |
 | `speed` | integer | Speed in km/h |
 | `ignition` | boolean | Whether ignition was active |
+
+---
+
+## Rate limit
+
+60 requests per minute per API token. Exceeding this returns a `429 Too Many Requests` response.

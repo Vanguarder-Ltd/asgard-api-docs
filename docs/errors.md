@@ -23,6 +23,7 @@ nav_order: 3
 | `403` | Forbidden | Your API token does not have access to the requested unit |
 | `404` | Not found | API token not recognised |
 | `422` | Unprocessable | Missing or invalid parameter — see `error` field in response |
+| `429` | Too Many Requests | Rate limit exceeded — maximum 60 requests per minute per API token |
 | `500` | Server error | Internal error — contact [support@vanguarder.com](mailto:support@vanguarder.com) |
 
 ---
