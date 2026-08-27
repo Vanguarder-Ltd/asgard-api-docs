@@ -74,3 +74,9 @@ GET https://integrate.vanguarder.com/chestnut/units?api_token=YOUR_TOKEN
 
 - Only units assigned to your API token are returned
 - Use the `id` field as `unit_id` when calling [`/chestnut/unit`](unit) or [`/chestnut/positions`](positions)
+
+---
+
+## Rate limit
+
+60 requests per minute per API token. Exceeding this returns a `429 Too Many Requests` response.

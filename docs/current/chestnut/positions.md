@@ -204,3 +204,9 @@ def backfill(from_ts, to_ts):
 - Only positions with valid GPS coordinates are returned (rows with no GPS fix are excluded)
 - Timestamps represent when the position was received by the server, not necessarily the GPS device time
 - A gap in positions does not necessarily mean the trailer was stationary — check [`/chestnut/unit`](unit) for ignition status
+
+---
+
+## Rate limit
+
+60 requests per minute per API token. Exceeding this returns a `429 Too Many Requests` response.
