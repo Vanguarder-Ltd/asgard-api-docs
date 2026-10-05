@@ -10,6 +10,21 @@ All notable changes to the Asgard API are documented here.
 
 ---
 
+## 5 October 2026
+
+### Added
+- **`GET /chestnut/positions`** — Each position now includes `angle` (heading, as documented) and `altitude`. `satellites`, `hdop` and `is_recovery` are now documented.
+- **`GET /generic/units`, `GET /generic/unit`** — The `position` object now includes `angle`.
+
+### Fixed
+- **`GET /chestnut/positions`** — Pagination could skip or repeat positions when buffered or recovered data was stored out of order. The cursor now follows the result order (`timestamp`, then `id`). The `cursor_id` / `next_cursor` parameters are unchanged.
+- **Documentation** — `timestamp` is the device GPS time, not the server receive time. Removed references to an `ignition` field, which is not provided by the API. Added guidance on re-querying an overlapping window to catch late-arriving buffered positions.
+
+### Unchanged
+- `direction` is still returned alongside `angle` for backward compatibility.
+
+---
+
 ## 30 June 2026
 
 ### Added
