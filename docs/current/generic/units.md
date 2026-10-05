@@ -60,8 +60,10 @@ GET https://integrate.vanguarder.com/generic/units?api_token=YOUR_TOKEN&include_
         "longitude": -2.24382,
         "altitude": 45.2,
         "angle": 217,
+        "direction": 217,
         "speed": 0,
-        "ignition": false
+        "satellites": 14,
+        "hdop": 0.8
       },
       "Events": "No Issues",
       "location": null
@@ -88,14 +90,21 @@ GET https://integrate.vanguarder.com/generic/units?api_token=YOUR_TOKEN&include_
 
 ### `position` object
 
+The last position reported by the tracker. Fields depend on the tracker model; the common ones are:
+
 | Field | Type | Description |
 |:---|:---|:---|
 | `latitude` | float | Latitude in decimal degrees (WGS84) |
 | `longitude` | float | Longitude in decimal degrees (WGS84) |
 | `altitude` | float | Altitude in metres above sea level |
-| `angle` | integer | Heading in degrees (0–359, clockwise from north) |
-| `speed` | integer | Speed in km/h |
-| `ignition` | boolean | Whether ignition was active |
+| `angle` | float | Heading in degrees (0–359, clockwise from north) |
+| `direction` | float | Same value as `angle`. Kept for backward compatibility |
+| `speed` | float | Speed in km/h |
+| `satellites` | integer | Number of GPS satellites used for the fix |
+| `hdop` | float | Horizontal dilution of precision (lower is more accurate) |
+
+{: .note }
+`lastContact` only advances when the tracker delivers new data. If a tracker loses mobile signal, `lastContact` and `position` stay at the last received values until it reconnects. Use [`/chestnut/positions`](../chestnut/positions) to back-fill the full track afterwards.
 
 ---
 

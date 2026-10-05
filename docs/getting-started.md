@@ -106,9 +106,12 @@ The Asgard API is designed to be polled at regular intervals. We recommend:
 1. Store the timestamp of the last successfully received position per unit
 2. If a polling cycle fails, do not skip — retry the window
 3. On reconnection, call /chestnut/positions with:
-     from_ts = last_known_timestamp
+     from_ts = last_known_timestamp - 30 minutes (overlap)
      to_ts   = current Unix timestamp
-4. Resume normal polling
+4. De-duplicate the results by position `id`
+5. Resume normal polling
 ```
+
+The 30-minute overlap matters because trackers buffer positions while they have no mobile signal and deliver them late, with their original (earlier) timestamps. A window that starts exactly at your last known timestamp can miss these late positions.
 
 This ensures no data gaps even if the API is temporarily unavailable.

@@ -57,8 +57,10 @@ GET https://integrate.vanguarder.com/generic/unit?api_token=YOUR_TOKEN&name=4439
         "longitude": -2.24382,
         "altitude": 45.2,
         "angle": 217,
+        "direction": 217,
         "speed": 0,
-        "ignition": false
+        "satellites": 14,
+        "hdop": 0.8
       }
     }
   ]
@@ -83,14 +85,18 @@ GET https://integrate.vanguarder.com/generic/unit?api_token=YOUR_TOKEN&name=4439
 
 ### `position` object
 
+The last position reported by the tracker. Fields depend on the tracker model; the common ones are:
+
 | Field | Type | Description |
 |:---|:---|:---|
 | `latitude` | float | Latitude in decimal degrees (WGS84) |
 | `longitude` | float | Longitude in decimal degrees (WGS84) |
 | `altitude` | float | Altitude in metres above sea level |
-| `angle` | integer | Heading in degrees (0–359, clockwise from north) |
-| `speed` | integer | Speed in km/h |
-| `ignition` | boolean | Whether ignition was active |
+| `angle` | float | Heading in degrees (0–359, clockwise from north) |
+| `direction` | float | Same value as `angle`. Kept for backward compatibility |
+| `speed` | float | Speed in km/h |
+| `satellites` | integer | Number of GPS satellites used for the fix |
+| `hdop` | float | Horizontal dilution of precision (lower is more accurate) |
 
 ---
 
