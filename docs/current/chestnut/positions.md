@@ -83,21 +83,29 @@ GET https://integrate.vanguarder.com/chestnut/positions
   "result": [
     {
       "id": 84729001,
+      "timestamp": 1781595183,
       "latitude": 53.48102,
       "longitude": -2.24195,
       "altitude": 44.1,
-      "angle": 42,
       "speed": 0,
-      "timestamp": 1781595183
+      "angle": 42,
+      "direction": 42,
+      "satellites": 14,
+      "hdop": 0.8,
+      "is_recovery": false
     },
     {
       "id": 84729002,
+      "timestamp": 1781595243,
       "latitude": 53.48198,
       "longitude": -2.24261,
       "altitude": 44.5,
-      "angle": 38,
       "speed": 5,
-      "timestamp": 1781595243
+      "angle": 38,
+      "direction": 38,
+      "satellites": 15,
+      "hdop": 0.7,
+      "is_recovery": false
     }
   ],
   "count": 122,
@@ -129,19 +137,23 @@ GET https://integrate.vanguarder.com/chestnut/positions
 
 | Field | Type | Description |
 |:---|:---|:---|
-| `id` | integer | Internal record ID — used as pagination cursor |
+| `id` | integer | Internal record ID — use it to de-duplicate positions and as the pagination cursor |
+| `timestamp` | integer | Unix timestamp (UTC) when the tracker recorded this position (device GPS time) |
 | `latitude` | float | Latitude in decimal degrees (WGS84) |
 | `longitude` | float | Longitude in decimal degrees (WGS84) |
-| `altitude` | float | Altitude in metres above sea level |
-| `angle` | integer | Heading in degrees (0–359, clockwise from north) |
-| `speed` | integer | Speed in km/h |
-| `timestamp` | integer | Unix timestamp (UTC) when this position was recorded |
+| `altitude` | float or null | Altitude in metres above sea level |
+| `speed` | float or null | Speed in km/h |
+| `angle` | float or null | Heading in degrees (0–359, clockwise from north) |
+| `direction` | float or null | Same value as `angle`. Kept for backward compatibility |
+| `satellites` | integer or null | Number of GPS satellites used for the fix |
+| `hdop` | float or null | Horizontal dilution of precision (lower is more accurate) |
+| `is_recovery` | boolean | `true` if the position was recovered from the tracker platform after the fact rather than received live |
 
 ---
 
 ## Pagination
 
-This endpoint uses **keyset pagination** based on the internal record `id`. This is more efficient than offset pagination for large datasets.
+This endpoint uses **keyset pagination**. Results are ordered by `timestamp`, then `id`. Pass the `next_cursor` value from a response as `cursor_id` to continue from the last position returned. Always use the `next_cursor` value exactly as returned — record IDs are not in chronological order, so do not compute a cursor yourself.
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -202,8 +214,10 @@ def backfill(from_ts, to_ts):
 ## Notes
 
 - Only positions with valid GPS coordinates are returned (rows with no GPS fix are excluded)
-- Timestamps represent when the position was received by the server, not necessarily the GPS device time
-- A gap in positions does not necessarily mean the trailer was stationary — check [`/chestnut/unit`](unit) for ignition status
+- `timestamp` is the time the tracker recorded the position (device GPS time), not the time it reached our servers
+- Trackers buffer data while they have no mobile signal and send it when the connection returns. Buffered positions can therefore arrive several minutes after their `timestamp`. To catch them, re-query a window that overlaps your previous request (for example the last 30 minutes) and de-duplicate by `id`
+- A gap in positions means the tracker did not deliver any GPS fix for that period, for example because of lost mobile or GPS signal. The trailer may still have been moving — compare `speed` either side of the gap
+- An invalid or unknown `cursor_id` returns a `422` error with `"error": "Invalid cursor_id"`
 
 ---
 

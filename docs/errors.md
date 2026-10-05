@@ -41,6 +41,7 @@ A `422` response always includes an `error` field explaining exactly what is wro
 | `from_ts must be less than to_ts` | Time window is reversed | Ensure `from_ts` is earlier than `to_ts` |
 | `Time window cannot exceed 24 hours` | Window larger than 86400 seconds | Split into multiple requests |
 | `unit_id, from_ts, to_ts, limit and cursor_id must be integers` | Non-numeric value passed | Ensure all numeric parameters are integers |
+| `Invalid cursor_id` | `cursor_id` does not match a position of this unit | Pass the `next_cursor` value from the previous response unchanged |
 | `Invalid API token` | Token not found or expired | Check token or contact support |
 
 ---
